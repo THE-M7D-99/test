@@ -25,3 +25,16 @@ sourceSets {
     }
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["java"])
+                groupId = "com.github.THE-M7D-99"
+                artifactId = "test"
+                version = "1.0"
+            }
+        }
+    }
+}
+
