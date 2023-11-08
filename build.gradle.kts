@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id 'maven-publish'
 }
 
 group = "org.example"
@@ -16,4 +17,18 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.github.m7devoo'
+                artifactId = 'material-compose'
+                version = '1.0'
+            }
+        }
+    }
 }
